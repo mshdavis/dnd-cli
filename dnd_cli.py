@@ -1,5 +1,6 @@
 import click
-import utils
+import components.roller as roller
+import components.str_interpreter as interpreter
 
 
 @click.group()
@@ -15,4 +16,16 @@ def cli():
               help='Number of dice to roll')
 def roll(dice_max, num_dice):
     """Direct command for rolling dice"""
-    click.echo('Rolled a {}'.format(utils.roll(dice_max, num_dice)))
+    click.echo('Rolled a {}'.format(roller.roll(dice_max, num_dice)))
+
+@cli.command()
+@click.option('--command', '-c',
+              help='Text command to evaluate (i.e. 1d6+2)')
+def eval(command):
+    """
+    Method for evaluating a text command i.e. 1d6+4
+
+    Will eventually contain support for character sheet variables.
+    """
+    click.echo('Rolled a {}'.format(interpreter.interpret_command(command)))
+

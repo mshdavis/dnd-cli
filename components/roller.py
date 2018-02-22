@@ -1,4 +1,4 @@
-"""Internal helper module."""
+"""Dice rolling."""
 import random
 
 
