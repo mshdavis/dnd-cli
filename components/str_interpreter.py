@@ -10,6 +10,8 @@ def interpret_command(command_string):
     character references with numbers before evaluating the 
     entire expression.
     """
+    cache_data = character.load_cache()
+
     # Handle dice commands
     dice_pattern = re.compile(r"((^\s?|\s+)\d+d\d+(\s+|\s?))")
     dice_matches = dice_pattern.findall(command_string)
@@ -23,7 +25,7 @@ def interpret_command(command_string):
     ref_pattern = re.compile(r"({[\w.-]+})")
     ref_matches = ref_pattern.findall(command_string)
     for match in ref_matches:
-        ref = handle_character_ref(match)
+        ref = handle_character_ref(match, cache_data)
         eval_string = eval_string.replace(match, str(ref))
 
     # Confirm command can now be evaluated

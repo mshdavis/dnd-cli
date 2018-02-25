@@ -5,6 +5,7 @@
         "class": "Warlock",
         "max_health": 36,
         "max_hit_dice": 4,
+        "proficiency_bonus": 2,
         "attributes": {
             "strength": 10,
             "str_mod": 0,
@@ -25,6 +26,17 @@
         },
         "skills": {
 
+        },
+        "equipment": {
+            "pact_weapon": {
+                "modifier": 1,
+                "damage": "1d8",
+                "weight": 0
+            }
+        },
+        "actions": {
+            "pact_attack": "1d20 + {character.attributes.cha_mod} + {character.proficiency_bonus} + {character.equipment.pact_weapon.modifier}",
+            "pact_damage": "1d8 + {character.attributes.cha_mod} + {character.equipment.pact_weapon.modifier}"
         }
     },
     "notes": [

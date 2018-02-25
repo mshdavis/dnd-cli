@@ -9,6 +9,28 @@ def cli():
     """Entrypoint for dnd cli"""
     pass
 
+@cli.command()
+@click.argument('file', type=click.Path(exists=True))
+def loadchar(file):
+    """
+    Method for tellng the cli to reference a character sheet json.
+    Pre-requisite for using most of this tool's features.
+    Example: 'dnd loadchar ./example-character.json'
+    """
+    character.load_character(file)
+    click.echo('Loaded character file {}'.format(click.format_filename(file)))
+
+@cli.command()
+@click.argument('action')
+def do(action):
+    """
+    Method for executing a custom string command defined in a character json under the reserved 'character.actions' section.
+
+    An extension of the raw eval functionality.
+    """
+    command = character.get_character_value('character.actions.{}'.format(action))
+    click.echo('Rolled a {}'.format(interpreter.interpret_command(command)))
+
 
 @cli.command()
 @click.option('--dice_max', '-d', default=20,
@@ -31,14 +53,3 @@ def eval(command):
     Example: 'dnd eval "1d6+2".
     """
     click.echo('Rolled a {}'.format(interpreter.interpret_command(command)))
-
-@cli.command()
-@click.argument('file', type=click.Path(exists=True))
-def loadchar(file):
-    """
-    Method for tellng the cli to reference a character sheet json.
-    Pre-requisite for using most of this tool's features.
-    Example: 'dnd loadchar ./example-character.json'
-    """
-    character.load_character(file)
-    click.echo('Loaded character file {}'.format(click.format_filename(file)))
