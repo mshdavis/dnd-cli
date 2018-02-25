@@ -1,0 +1,36 @@
+{
+    "character": {
+        "name": "Dharvas Riverwader",
+        "level": 4,
+        "class": "Warlock",
+        "max_health": 36,
+        "max_hit_dice": 4,
+        "attributes": {
+            "strength": 10,
+            "str_mod": 0,
+            "dexterity": 14,
+            "dex_mod": 2,
+            "constitution": 16,
+            "con_mod": 3,
+            "intelligence": 8,
+            "int_mod": -1,
+            "wisdom": 9,
+            "wis_mod": -1,
+            "charisma": 18,
+            "cha_mod": 4
+        },
+        "status": {
+            "health": 36,
+            "hit_dice": 4
+        },
+        "skills": {
+
+        }
+    },
+    "notes": [
+        "Wowee a campaign started!",
+        "We met a helpful npc!",
+        "We killed a couple goblins!",
+        "We died :("
+    ]
+}
